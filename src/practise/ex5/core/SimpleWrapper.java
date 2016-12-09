@@ -20,6 +20,7 @@ public class SimpleWrapper implements Container,Wrapper{
     private Loader loader;
     private String name;
     private SimplePipeline pipeline = new SimplePipeline(this);
+    private Container parent;
 
     public SimpleWrapper(){
         pipeline.setBasic(new SimpleWrapperValue());
@@ -74,11 +75,12 @@ public class SimpleWrapper implements Container,Wrapper{
     }
 
     public Container getParent() {
-        return null;
+        return parent;
     }
 
     public void setParent(Container container) {
-
+        this.parent = container;
+        container.addChild(this);
     }
 
     public ClassLoader getParentClassLoader() {
@@ -233,7 +235,7 @@ public class SimpleWrapper implements Container,Wrapper{
         if (instance!=null)
             return instance;
 
-        Loader loader =  getLoader();
+        Loader loader =  getParent().getLoader();
         ClassLoader classLoader = loader.getClassLoader();
 
         Class aClass = null;
