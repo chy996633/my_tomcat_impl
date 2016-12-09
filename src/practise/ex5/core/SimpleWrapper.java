@@ -25,6 +25,9 @@ public class SimpleWrapper implements Container,Wrapper{
         pipeline.setBasic(new SimpleWrapperValue());
     }
 
+    public synchronized void addValve(Valve valve){
+        pipeline.addValve(valve);
+    }
 
     public String getInfo() {
         return null;
@@ -63,11 +66,11 @@ public class SimpleWrapper implements Container,Wrapper{
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public void setName(String name) {
-
+        this.name = name;
     }
 
     public Container getParent() {
