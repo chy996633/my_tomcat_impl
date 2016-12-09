@@ -5,7 +5,9 @@ import practise.ex5.core.SimpleWrapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Map;
 
 /**
@@ -33,6 +35,17 @@ public class HeaderLoggerValve implements Contained,Valve {
         System.out.println("serverPort:"+serverPort);
         System.out.println("parameterMap:"+parameterMap);
         System.out.println("serverName:"+getContainer().getName());
+        if (request1 instanceof HttpServletRequest){
+            HttpServletRequest hreq = (HttpServletRequest)request1;
+            Enumeration headerNames = hreq.getHeaderNames();
+            while (headerNames.hasMoreElements()){
+                String headerName = headerNames.nextElement().toString();
+                String header = hreq.getHeader(headerName);
+                System.out.println(headerName+" : "+header);
+            }
+
+        }
+
         System.out.println("=====================");
 
     }
