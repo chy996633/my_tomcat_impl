@@ -15,6 +15,7 @@ public class SimpleContextValve implements Contained,Valve {
 
     public void invoke(Request request, Response response, ValveContext context) throws IOException, ServletException {
         Mapper mapper = container.findMapper("HTTP");
+        //请求/fla.ivo 图标的时候会报错
         Wrapper wrapper = (Wrapper) mapper.map(request,false);
         Servlet servlet = wrapper.allocate();
         servlet.service(request.getRequest(),response.getResponse());

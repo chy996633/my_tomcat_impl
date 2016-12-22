@@ -29,6 +29,7 @@ public class Bootstrap2  {
         mapper.addMap("/M","Modern");
         mapper.addMap("/PrimitiveServlet","Primitive");
         mapper.addMap("/P","Primitive");
+        mapper.addMap("/S","Session");
         simpleContext.addMapper(mapper);
 
         SimpleWrapper wrapper1 = new SimpleWrapper();
@@ -40,6 +41,12 @@ public class Bootstrap2  {
         wrapper2.setServletClass("PrimitiveServlet");
         wrapper2.setName("Primitive");
         wrapper2.setParent(simpleContext);
+
+        SimpleWrapper wrapper3 = new SimpleWrapper();
+        wrapper3.setServletClass("SessionServlet");
+        wrapper3.setName("Session");
+        wrapper3.setParent(simpleContext);
+
 
         SimpleLoader simpleLoader = new SimpleLoader();
         simpleContext.setLoader(simpleLoader);
