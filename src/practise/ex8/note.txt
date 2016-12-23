@@ -1,0 +1,26 @@
+第八课 ClassLoader
+
+主要的知识点：
+
+
+1.解释Java类加载的委托机制，并说明Tomcat为什么需要自己的ClassLoader
+
+Java中的类加载器：Bootstrap ClassLoader（加载JVM） , Extension ClassLoader（加载核心类库） , System ClassLoader（加载项目所需类库）
+为了安全性，对一个类的加载会委托给父类加载器，如果福类加载器找不到，就会依次传递给子类。这样最核心的库一定都是由Bootstrap ClassLoader来加载。
+
+
+为了特定规则：Tomcat的ClassLoader只能加载WEB-INF/classes下的class以及WEB-INF/lib下的类库
+为了缓存之前加载的类
+为了支持reload
+
+
+2.Tomcat如何实现类加载
+WebappClassLoader  modified()  会返回true/false 来说明是否有class更新了，然后WebappLoader会调用context的reload() 实现重载。
+
+
+3.如何实现reload功能
+
+StandardContext的reload()
+
+先暂停，然后绑定线程，接着停掉原有的manager、wrapper、loader……然后重新启动
+

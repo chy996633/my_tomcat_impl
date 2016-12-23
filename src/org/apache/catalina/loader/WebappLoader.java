@@ -178,7 +178,7 @@ public class WebappLoader
     /**
      * The debugging detail level for this component.
      */
-    private int debug = 0;
+    private int debug = 2;
 
 
     /**
@@ -225,7 +225,7 @@ public class WebappLoader
     /**
      * The reloadable flag for this Loader.
      */
-    private boolean reloadable = false;
+    private boolean reloadable = true;
 
 
     /**

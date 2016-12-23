@@ -340,7 +340,7 @@ public class StandardContext
     /**
      * The reloadable flag for this web application.
      */
-    private boolean reloadable = false;
+    private boolean reloadable = true;
 
 
     /**
