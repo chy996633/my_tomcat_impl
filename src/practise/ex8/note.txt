@@ -6,7 +6,7 @@
 1.解释Java类加载的委托机制，并说明Tomcat为什么需要自己的ClassLoader
 
 Java中的类加载器：Bootstrap ClassLoader（加载JVM） , Extension ClassLoader（加载核心类库） , System ClassLoader（加载项目所需类库）
-为了安全性，对一个类的加载会委托给父类加载器，如果福类加载器找不到，就会依次传递给子类。这样最核心的库一定都是由Bootstrap ClassLoader来加载。
+为了安全性，对一个类的加载会委托给父类加载器，如果父类加载器找不到，就会依次传递给子类。这样最核心的库一定都是由Bootstrap ClassLoader来加载。
 
 
 为了特定规则：Tomcat的ClassLoader只能加载WEB-INF/classes下的class以及WEB-INF/lib下的类库
@@ -23,4 +23,20 @@ WebappClassLoader  modified()  会返回true/false 来说明是否有class更新
 StandardContext的reload()
 
 先暂停，然后绑定线程，接着停掉原有的manager、wrapper、loader……然后重新启动
+
+4.WebappClassLoader怎么加载类
+
+看loadClass()。
+    4.1 检查local cache
+    4.2 检查父类(ClassLoader) cache
+    4.3 尝试system class loader来加载
+    4.4 securityManager.checkPackageAccess
+    4.5 判断是否委托父类加载
+    4.6 查找本地local repositories
+    4.7 无条件委托父类加载
+    4.8 抛出ClassNotFoundException
+
+
+
+
 
