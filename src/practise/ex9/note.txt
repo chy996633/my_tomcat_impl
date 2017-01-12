@@ -1,0 +1,12 @@
+第九章 Session
+
+对于每个请求的cookie，根据sessionID从后台中获取对应的session(如果没有就创造一个)。
+
+如何实现Session
+
+session包含超时时间，sessionID,attribute键值对
+
+如何支持分布式Session获取
+
+* 如何实现Session的持久化
+
