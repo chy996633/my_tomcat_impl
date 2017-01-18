@@ -1,0 +1,24 @@
+Chapter 10 Security
+
+安全相关组件：Realm   GenericPrincipal   LoginConfig   Authenticator
+
+
+Realm最重要的是四个authenticate()重载方法
+
+GenericPrincipal必须和一个Realm相关联
+
+LoginConfig包含了一个Realm name 和 认证的方法 ，如果web.xml中包含login-config元素，那么启动过程中就会创建一个LoginConfig对象
+
+Authenticator
+
+
+课外延伸阅读：
+
+1. Tomcat架构师 Craig R. McClanahan
+
+2. Servlet3.0 Specification 定义了Servlet标准
+http://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf
+
+3. Servlet3.0 Specification中 关于 Security部分的 中文翻译
+https://waylau.gitbooks.io/servlet-3-1-specification/content/docs/Security/13.1%20Introduction.html
+
